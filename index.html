@@ -1,0 +1,19 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Plant Disease Classifier</title>
+</head>
+<body>
+    <div class="container">
+      
+        <h1>Plant Disease Classifier</h1>
+        <p>Upload an image of a plant leaf to check for diseases:</p>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+</body>
+</html>
