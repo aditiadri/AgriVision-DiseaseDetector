@@ -1,0 +1,54 @@
+body {
+    background: url('depositphotos_658323714-stock-photo-green-rice-field-morning.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.8); /* for readability */
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 400px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin: 0;
+    color: #333;
+}
+
+p {
+    color: #666;
+    margin: 20px 0;
+}
+
+input[type="file"] {
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: calc(100% - 20px);
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #333;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
