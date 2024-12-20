@@ -33,11 +33,6 @@ if (app_mode=="Model Predict"):
 
         st.success(f"Predicted disease: {CLASS_NAMES[res]}")
 
-        
-        
-        
-
-
 
 
 
