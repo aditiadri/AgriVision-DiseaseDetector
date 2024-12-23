@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plant Disease Prediction</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h1>Plant Disease Prediction</h1>
-        <form action="/predict" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" required>
-            <button type="submit">Predict</button>
-        </form>
+    <div class="main-heading">
+        <h1>AgriVision - Plant Disease Predictor</h1>
+        <div class="center-box">
+            <p>
+                AgriVision uses AI to detect plant diseases from uploaded images, empowering timely action for healthier crops. 
+                Upload, analyze, and get instant, accurate results to safeguard your plants.
+               
+            </p>
+        </div>
+                
+                <button class="predict-button" onclick="window.location.href='/predict-form'" type="submit">Predict</button>
+
+        
     </div>
 </body>
 </html>

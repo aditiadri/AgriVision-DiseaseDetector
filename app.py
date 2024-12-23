@@ -26,6 +26,11 @@ CLASS_NAMES = [
 def index():
     return render_template('index.html')
 
+@app.route('/predict-form')
+def predict_form():
+    return render_template('predict_form.html')
+
+
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
@@ -33,21 +38,17 @@ def predict():
         if file.filename == '':
             return jsonify({"error": "No selected file"}), 400
 
-        # Save the file to a temporary directory
         upload_dir = "uploads"
         if not os.path.exists(upload_dir):
             os.makedirs(upload_dir)
         file_path = os.path.join(upload_dir, file.filename)
         file.save(file_path)
 
-        # Predict the class
         result_index = model_prediction(file_path)
         predicted_class = CLASS_NAMES[result_index]
 
-        # Clean up the uploaded file
         os.remove(file_path)
 
-        # Return the result
         return jsonify({"Predicted Disease": predicted_class})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
