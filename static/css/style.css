@@ -9,6 +9,20 @@ body {
     background-position: center;
 }
 
+.upload-box {
+    width: 180px;
+    height: 80px;
+    border: 1px;
+    padding: 200px;
+    background-color: transparent;
+    position: center;
+    margin-top: 150px;
+    margin-bottom: 150px;
+    margin-left: 420px;
+    margin-right: 420px;
+    padding-top: 30px;
+}
+
 .vt323-regular {
     font-family: "VT323", serif;
     font-weight: 400;
@@ -21,12 +35,12 @@ body {
     border-radius: 20px;
     text-align: center;
     display: flex;
-    flex-direction: column; /* Allows stacking of heading and paragraph */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     font-family: "VT323", serif;
-   
 }
+
 .predict-button {
     background-color: green;
     color: white;
@@ -38,8 +52,6 @@ body {
     transition: background-color 0.3s ease;
     margin-top: 50px;
     font-style: bold;
-    animation: wave 2s infinite;
-    display: inline-block;
     animation: wave 2s infinite;
     display: inline-block;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -54,16 +66,32 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
+.new-heading h4 {
+    font-size: 2.0rem;
+    text-align: center;
+    background: transparent;
+    margin: 10px;
+    color: whitesmoke;
+    line-height: 1.4;
+    text-shadow: 2px 2px 5px green;
+}
+
 .center-box {
     display: flex;
     align-items: bottom;
-    justify-content:    center;
-    width: 87%; /* Adjust width as needed */
-    max-width: 1200px; /* Ensure it doesn't exceed a reasonable size */
-    margin-top: 50px; /* Add spacing below the heading */
+    justify-content: center;
+    width: 87%;
+    max-width: 1200px;
+    margin-top: 50px;
     padding: 20px;
-    border: white; /* Invisible border */
-  
+    border: white;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 .center-box p {
@@ -71,11 +99,11 @@ body {
     margin: 0;
     text-align: center;
     color: whitesmoke;
-    line-height: 1.4; /* Better readability */
+    line-height: 1.4;
     text-shadow: 2px 2px 5px green;
-    margin-bottom: 20px; 
-   
+    margin-bottom: 20px;
 }
+
 @keyframes wave {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
@@ -84,7 +112,71 @@ body {
 .predictpage {
     background-image: url("../images/im.gif");
     background-size: fill;
-    
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.upload-label {
+    font-size: 2.5rem;
+    margin-right: 10px;
+    margin-top: 40px;
+    color: green;
+    text-wrap: nowrap;
+    font-family: "VT323", serif;
+    color: white;
+   
+}
+
+#file-upload {
+    display: none;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px; /* Space between buttons */
+    margin-top: 20px; /* Adjusted margin */
+}
+
+.predict-button1 {
+    background-color: green;
+    color: white;
+    border: wheat;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    word-spacing: 3px;
+    transition: background-color 0.3s ease;
     
+    font-family: "VT323", serif;
+}
+
+.custom-label {
+    background-color: green;
+    color: white;
+    border: wheat;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    word-spacing: 3px;
+    transition: background-color 0.3s ease;
+ 
+    font-family: "VT323", serif;
+    white-space: nowrap; /* Changed from text-wrap to white-space */
+    display: inline-block; /* Added to ensure proper alignment */
+}
+
+.custom-label:hover {
+    background-color: #45a049;
+}
+
+#file-name {
+    margin-left: 10px;
+    font-size: 14px;
+    color: #333;
 }

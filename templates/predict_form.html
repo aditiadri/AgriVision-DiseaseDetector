@@ -13,9 +13,14 @@
     <div class="predictpage">
         <div class="upload-box">
             <form action="/predict" method="post" enctype="multipart/form-data">
-                <label for="file-upload" class="upload-label">Choose Image</label>
-                <input type="file" id="file-upload" name="file" accept="image/*" required>
-                <button type="submit">Submit</button>
+                <div class="form-group">
+                    <label for="file-upload" class="upload-label">Upload an Image</label>
+                    <input type="file" id="file-upload" name="file" accept="image/*" required>
+                </div>
+                <div class="button-container">
+                    <label for="file-upload" class="custom-label">Choose File</label>
+                    <button type="submit" class="predict-button1">Submit</button>
+                </div>
             </form>
         </div>
     </div>
