@@ -1,1 +1,2 @@
 tensorflow==2.17.1
+pip freeze > requirements.txt
