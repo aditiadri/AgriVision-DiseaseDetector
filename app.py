@@ -66,6 +66,6 @@ def model_prediction(file_path):
     return np.argmax(predictions)
 
 if __name__ == '__main__':
-    port = int(os.getenv("PORT", 4000))  # Use environment variable for port
+    port = int(os.getenv("PORT", 10000))  # Use environment variable for port
     app.run(host="0.0.0.0", port=port, debug=True)
 
