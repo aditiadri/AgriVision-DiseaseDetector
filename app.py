@@ -2,16 +2,25 @@ from flask import Flask, render_template, request, jsonify
 import tensorflow as tf
 import numpy as np
 import os
-from PIL import Image
 
 app = Flask(__name__)
 
-gpus = tf.config.experimental.list_physical_devices('GPU')
-for gpu in gpus:
-    tf.config.experimental.set_memory_growth(gpu, True)
+# Ensure TensorFlow doesn't allocate all GPU memory (only relevant if running on a GPU)
+try:
+    gpus = tf.config.list_physical_devices('GPU')
+    if gpus:
+        for gpu in gpus:
+            tf.config.experimental.set_memory_growth(gpu, True)
+except Exception as e:
+    print(f"GPU configuration error: {e}")
 
-# Load model only once at startup to avoid repeated loading
-model = tf.keras.models.load_model("my_model.keras")
+# Load model once at startup
+try:
+    model = tf.keras.models.load_model("my_model.keras")
+    print("Model loaded successfully!")
+except Exception as e:
+    print(f"Error loading model: {e}")
+    model = None  # Prevents crashes if model fails to load
 
 CLASS_NAMES = [
     'Apple___Apple_scab', 'Apple___Black_rot', 'Apple___Cedar_apple_rust', 'Apple___healthy',
@@ -71,5 +80,4 @@ def model_prediction(file_path):
 
 if __name__ == "__main__":
     app.run()
-
 
