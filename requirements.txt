@@ -3,7 +3,6 @@ pandas
 matplotlib
 plotly
 scikit-learn
-tensorflow==2.17.1
 streamlit
 gunicorn
 Flask
