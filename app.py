@@ -70,5 +70,5 @@ def model_prediction(file_path):
 import os
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 10000))  # Use the port assigned by Render, default to 10000
-    app.run(host='0.0.0.0', port=port, debug=True)
+    # Do not call app.run() when using Gunicorn
+    pass
