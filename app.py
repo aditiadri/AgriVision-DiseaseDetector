@@ -70,5 +70,6 @@ def model_prediction(file_path):
 import os
 
 if __name__ == '__main__':
+    
    
-    app.run()
+    app.run(debug=True)
