@@ -1,13 +1,12 @@
 from flask import Flask, render_template, request, jsonify
 import tensorflow as tf
 import numpy as np
-from PIL import Image
 import os
-
-
+from PIL import Image
 
 app = Flask(__name__)
 
+# Load model only once at startup to avoid repeated loading
 model = tf.keras.models.load_model("my_model.keras")
 
 CLASS_NAMES = [
@@ -32,7 +31,6 @@ def index():
 def predict_form():
     return render_template('predict_form.html')
 
-
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
@@ -40,15 +38,17 @@ def predict():
         if file.filename == '':
             return jsonify({"error": "No selected file"}), 400
 
+        # Save file temporarily
         upload_dir = "uploads"
-        if not os.path.exists(upload_dir):
-            os.makedirs(upload_dir)
+        os.makedirs(upload_dir, exist_ok=True)
         file_path = os.path.join(upload_dir, file.filename)
         file.save(file_path)
 
+        # Predict class
         result_index = model_prediction(file_path)
         predicted_class = CLASS_NAMES[result_index]
 
+        # Clean up file
         os.remove(file_path)
 
         return jsonify({"Predicted Disease": predicted_class})
@@ -56,20 +56,16 @@ def predict():
         return jsonify({"error": str(e)}), 500
 
 def model_prediction(file_path):
-    
-    model = tf.keras.models.load_model("my_model.keras")
-    
-   
+    # Load and preprocess image
     image = tf.keras.preprocessing.image.load_img(file_path, target_size=(128, 128))
     input_arr = tf.keras.preprocessing.image.img_to_array(image)
-    input_arr = np.array([input_arr]) 
+    input_arr = np.expand_dims(input_arr, axis=0)  # Add batch dimension
     
+    # Make prediction
     predictions = model.predict(input_arr)
     return np.argmax(predictions)
 
-import os
-
 if __name__ == '__main__':
-    
-   
-    app.run(debug=True)
+    port = int(os.getenv("PORT", 4000))  # Use environment variable for port
+    app.run(host="0.0.0.0", port=port, debug=True)
+
