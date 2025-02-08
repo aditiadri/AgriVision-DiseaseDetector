@@ -4,6 +4,8 @@ import numpy as np
 from PIL import Image
 import os
 
+
+
 app = Flask(__name__)
 
 model = tf.keras.models.load_model("my_model.keras")
@@ -65,5 +67,8 @@ def model_prediction(file_path):
     predictions = model.predict(input_arr)
     return np.argmax(predictions)
 
+import os
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 10000))  # Use the port assigned by Render, default to 10000
+    app.run(host='0.0.0.0', port=port, debug=True)
