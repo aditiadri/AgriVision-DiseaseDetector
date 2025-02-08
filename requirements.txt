@@ -6,4 +6,4 @@ scikit-learn
 streamlit
 gunicorn
 Flask
-tensorflow-cpu
+tensorflow
